@@ -1,0 +1,10 @@
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://127.0.0.1:5432/lostboyz
+    username: postgres
+    password: gu2K5lde87J7N16Ruy6Ll30
+    pool-size: 1000
+
+logging:
+  file:
+    name: logs/lostboyz.log
