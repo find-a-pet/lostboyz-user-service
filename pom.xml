@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mtotowamkwe</groupId>
-	<artifactId>lostboyz</artifactId>
+	<artifactId>lostboyz-user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lostboyz</name>
+	<name>lostboyz-user-service</name>
 	<description>A Spring Boot project for the lost boyz app backend</description>
 	<properties>
 		<java.version>11</java.version>
