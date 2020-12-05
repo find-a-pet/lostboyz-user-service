@@ -15,7 +15,7 @@ public class Constants {
     public static final String USER_DELETION_FAILED_ERROR_MESSAGE = "Could not delete the user ";
 
     // paths
-    public static final String ADI_USERS_ENDPOINT = "/api/v1/users";
-    public static final String API_ID_ENDPOINT =  ADI_USERS_ENDPOINT + "/{id}";
+    public static final String API_USERS_ENDPOINT = "/api/v1/users";
+    public static final String API_ID_ENDPOINT =  API_USERS_ENDPOINT + "/{id}";
     public static final String PATH_VARIABLE = "id";
 }

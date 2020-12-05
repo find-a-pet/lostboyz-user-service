@@ -38,7 +38,7 @@ public class UserController {
         this.assembler = assembler;
     }
 
-    @GetMapping(Constants.ADI_USERS_ENDPOINT)
+    @GetMapping(Constants.API_USERS_ENDPOINT)
     public ResponseEntity<?> getAllUsers() {
         List<EntityModel<User>> users = userService.getAllUsers().stream()
                 .map(assembler::toModel)
@@ -50,7 +50,7 @@ public class UserController {
         return ResponseEntity.ok().body(entityModel);
     }
 
-    @PostMapping(Constants.ADI_USERS_ENDPOINT)
+    @PostMapping(Constants.API_USERS_ENDPOINT)
     public ResponseEntity<?> addUser(@Valid @NonNull @RequestBody User user) {
         EntityModel<User> entityModel = assembler.toModel(
                 Optional.ofNullable(userService.addUser(user)
