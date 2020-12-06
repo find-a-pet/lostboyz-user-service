@@ -8,3 +8,6 @@ app:
 logging:
   file:
     name: logs/lostboyz.log
+
+server:
+  port: 14001
