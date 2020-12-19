@@ -1,13 +1,35 @@
-app:
-  datasource:
-    jdbc-url: jdbc:postgresql://127.0.0.1:5432/lostboyz
-    username: postgres
-    password: gu2K5lde87J7N16Ruy6Ll30
-    pool-size: 1000
+description:  ${spring.application.description}
+title:  ${spring.application.name}
+version:  ${spring.application.version}
 
-logging:
-  file:
-    name: logs/lostboyz.log
+info:
+  app:
+    id: ${spring.application.id}
+    name: ${spring.application.name}
+    version: ${spring.application.version}
 
 server:
   port: 14001
+
+app:
+  datasource:
+    jdbc-url: ${JDBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    pool-size: 1000
+
+spring:
+  application:
+    description: Lostboyz user service
+    id: lostboyz-user-service
+    name: lostboyz-user-service
+    version: 0.0.1-SNAPSHOT
+  output:
+    ansi:
+      enabled: detect
+
+logging:
+  file:
+    name: logs/lostboyz-user-service.log
+  level:
+    root: ERROR
