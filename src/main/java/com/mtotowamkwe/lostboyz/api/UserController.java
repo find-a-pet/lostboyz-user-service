@@ -75,7 +75,7 @@ public class UserController {
     @PutMapping(Constants.API_ID_ENDPOINT)
     public ResponseEntity<?> updateUser(@PathVariable(Constants.PATH_VARIABLE) UUID id, @Valid @NonNull @RequestBody User user) {
         Optional<User> updateUser = Optional.ofNullable(userService.updateUser(id, user)
-                .orElseThrow(() -> new UserUpdateFailedException(id, user)));
+                .orElseThrow(() -> new UserUpdateFailedException(user)));
 
         EntityModel<User> entityModel = assembler.toModel(updateUser.get());
 

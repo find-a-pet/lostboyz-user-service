@@ -13,7 +13,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,7 +31,7 @@ public class UserDataAccessService implements UserDao {
 
     @Override
     public Optional<User> registerUser(UUID id, User user) {
-        Optional<User> createdUser = null;
+        Optional<User> createdUser = Optional.empty();
         try {
             int rowsAffected = jdbcTemplate.update(
                     Constants.REGISTER_A_USER,
@@ -78,7 +77,7 @@ public class UserDataAccessService implements UserDao {
 
     @Override
     public Optional<User> selectUser(UUID id) {
-        Optional<User> u = null;
+        Optional<User> u;
         try {
             u = jdbcTemplate.queryForObject(
                     Constants.SELECT_A_USER,
@@ -107,7 +106,7 @@ public class UserDataAccessService implements UserDao {
 
     @Override
     public Optional<User> deleteUser(UUID id) {
-        Optional<User> user = null;
+        Optional<User> user;
 
         try {
             user = selectUser(id);
@@ -127,18 +126,18 @@ public class UserDataAccessService implements UserDao {
                 throw new UserDeletionFailedException(id);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
     public Optional<User> updateUser(UUID id, User user) {
-        Optional<User> oldUser = null;
+        Optional<User> oldUser;
 
         try {
             oldUser = selectUser(id);
         } catch (UserNotFoundException unfex) {
             log.error("updateUser()", unfex);
-            throw new UserUpdateFailedException(id, user);
+            throw new UserUpdateFailedException(user);
         }
 
         if (!oldUser.isEmpty()) {
@@ -156,10 +155,10 @@ public class UserDataAccessService implements UserDao {
                 return oldUser;
             } catch (DataAccessException dae) {
                 log.error("updateUser()", dae);
-                throw new UserUpdateFailedException(id, user);
+                throw new UserUpdateFailedException(user);
             }
         }
 
-        return null;
+        return Optional.empty();
     }
 }
