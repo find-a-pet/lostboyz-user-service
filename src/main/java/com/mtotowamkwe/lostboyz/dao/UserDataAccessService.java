@@ -115,7 +115,7 @@ public class UserDataAccessService implements UserDao {
             throw new UserDeletionFailedException(id);
         }
 
-        if (!user.isEmpty()) {
+        if (user.isPresent()) {
             try {
                 int rowsAffected = jdbcTemplate.update(Constants.DELETE_A_USER, id);
                 if (rowsAffected > 0) {
@@ -140,7 +140,7 @@ public class UserDataAccessService implements UserDao {
             throw new UserUpdateFailedException(user);
         }
 
-        if (!oldUser.isEmpty()) {
+        if (oldUser.isPresent()) {
             try {
                 int rowsUpdated = jdbcTemplate.update(
                         Constants.UPDATE_A_USER_NAME_AND_PHONE_NUMBER,
