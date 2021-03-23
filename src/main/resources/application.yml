@@ -27,6 +27,8 @@ spring:
   output:
     ansi:
       enabled: detect
+  flyway:
+    baseline-on-migrate: true
 
 logging:
   file:
